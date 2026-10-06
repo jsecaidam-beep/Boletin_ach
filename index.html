@@ -705,105 +705,109 @@ body{
   .facebook-official-embed{height:390px!important}
 }
 </style><style>
-/* ===== Social brand marks v5: embedded vectors, no network dependency ===== */
+/* ===== v8 restored: preserve complete v5 experience ===== */
+.shell{position:relative;z-index:1}
+.page-gradient-mesh,.bg-float,.wave{pointer-events:none}
+.coverflow{isolation:isolate}
+.cf-stage{z-index:2}
+.cf-nav,.cf-dots{z-index:12}
+
+/* Keep project photographs visible while the proxy/original fallback resolves. */
+.cf-photo{
+  background:linear-gradient(135deg,#dceff7,#c4e8f2);
+}
+
+/* Social icons from v5 are inline SVGs: keep them centered and independent of external CDNs. */
 .social-app-icon{
   display:grid!important;
   place-items:center!important;
   overflow:hidden!important;
-  flex:0 0 auto!important;
-  padding:0!important;
-  border:none!important;
 }
-.social-platform-title .social-app-icon{
-  width:48px!important;
-  height:48px!important;
-  border-radius:14px!important;
-  box-shadow:0 10px 22px rgba(0,72,110,.13)!important;
-}
-.social-card-platform .social-app-icon{
-  width:25px!important;
-  height:25px!important;
-  border-radius:8px!important;
-  box-shadow:none!important;
-}
-.social-brand-svg{
+.social-app-icon svg{
   display:block!important;
-  width:64%!important;
-  height:64%!important;
-}
-.social-card-platform .social-brand-svg{
   width:70%!important;
   height:70%!important;
+  max-width:100%!important;
+  max-height:100%!important;
 }
-
-/* Header marks */
-.social-platform-title.instagram .social-app-icon{
-  background:radial-gradient(circle at 32% 100%,#ffd600 0 24%,#ff7a00 25% 40%,#ff0169 55%,#d300c5 75%,#7638fa 100%)!important;
-  color:#fff!important;
-}
-.social-platform-title.instagram .social-brand-svg path{fill:currentColor!important}
-
-.social-platform-title.linkedin .social-app-icon{
-  background:#0A66C2!important;
-  color:#fff!important;
-}
-.social-platform-title.linkedin .social-brand-svg path{fill:currentColor!important}
-
-.social-platform-title.facebook .social-app-icon{
-  background:#1877F2!important;
-  color:#fff!important;
-}
-.social-platform-title.facebook .social-brand-svg path{fill:currentColor!important}
-
-/* Small marks inside cards */
-.social-card-platform .social-app-icon[data-brand="instagram"]{
-  background:radial-gradient(circle at 32% 100%,#ffd600 0 24%,#ff7a00 25% 40%,#ff0169 55%,#d300c5 75%,#7638fa 100%)!important;
-  color:#fff!important;
-}
-.social-card-platform .social-app-icon[data-brand="linkedin"]{
-  background:#0A66C2!important;color:#fff!important;
-}
-.social-card-platform .social-app-icon[data-brand="facebook"]{
-  background:#1877F2!important;color:#fff!important;
-}
-.social-card-platform .social-brand-svg path{fill:currentColor!important}
 </style><style>
-/* ===== v7 stability fix =====
-   Content no longer depends on JavaScript to become visible. */
-.reveal{
-  opacity:1!important;
-  transform:none!important;
+/* v9: Facebook + LinkedIn robust cards (no fragile third-party embeds) */
+.stable-social-preview{height:285px!important;display:grid;place-items:center;overflow:hidden!important;position:relative}
+.stable-social-preview.linkedin{background:linear-gradient(145deg,#eef7ff,#d9ebff)!important}
+.stable-social-preview.facebook{background:linear-gradient(145deg,#edf5ff,#d9eaff)!important}
+.stable-social-link{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;text-decoration:none;padding:28px;color:#164f70}
+.stable-social-logo{width:72px;height:72px;display:block;filter:drop-shadow(0 10px 18px rgba(0,65,105,.12))}
+.stable-social-link strong{font:900 18px/1.2 "Futura","Roboto",sans-serif;color:#145978}
+.stable-social-link span{font-size:11px;font-weight:800;color:#EE7203}
+.stable-social-preview.facebook.is-reel::after{content:"▶";position:absolute;right:18px;bottom:18px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#1877F2;color:#fff;font-size:13px;box-shadow:0 8px 20px rgba(24,119,242,.3)}
+.stable-social-preview iframe{display:none!important}
+@media(max-width:720px){.stable-social-preview{height:235px!important}}
+</style><style>
+/* ===== v10 social links: no blank third-party embeds ===== */
+.social-link-note{
+  margin:-2px 0 12px 57px;
+  padding:8px 11px;
+  border-radius:13px;
+  background:rgba(0,95,182,.055);
+  border:1px solid rgba(0,95,182,.10);
+  color:#5a7485;
+  font-size:10px;
+  line-height:1.45;
 }
-@media (prefers-reduced-motion:no-preference){
-  .reveal{
-    animation:safeReveal .72s cubic-bezier(.2,.75,.2,1) both;
-  }
+.social-stable-preview{
+  min-height:255px!important;
+  height:255px!important;
+  overflow:hidden!important;
+  position:relative;
 }
-@keyframes safeReveal{
-  from{opacity:.001;transform:translateY(16px)}
-  to{opacity:1;transform:none}
+.social-stable-preview.linkedin{
+  background:linear-gradient(145deg,#0A66C2,#084e96)!important;
 }
-
-/* Keep the main document layer above decorative background meshes. */
-.shell{
-  position:relative!important;
-  z-index:1!important;
+.social-stable-preview.facebook{
+  background:linear-gradient(145deg,#1877F2,#0e5fc7)!important;
 }
-.page-gradient-mesh,
-.bg-float,
-.wave{
-  pointer-events:none!important;
+.social-stable-link{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:38px 22px 24px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff!important;
 }
-
-/* Broken third-party embeds must never collapse or cover the page. */
-.social-preview-frame iframe{
-  max-width:100%;
+.social-stable-mark{
+  width:64px;
+  height:64px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  font:900 33px/1 "Futura","Roboto",sans-serif;
+  box-shadow:0 14px 30px rgba(0,0,0,.12);
 }
-.facebook-official-embed,
-.linkedin-embed-frame{
-  contain:layout paint;
+.social-stable-mark.linkedin{color:#0A66C2}
+.social-stable-mark.facebook{
+  color:#1877F2;
+  border-radius:50%;
+  font-family:Arial,sans-serif;
 }
-</style><script>document.documentElement.classList.add('js-ready');</script></head>
+.social-stable-link strong{
+  color:#fff!important;
+  font:900 17px/1.15 "Futura","Roboto",sans-serif;
+}
+.social-stable-link span:last-child{
+  color:rgba(255,255,255,.84)!important;
+  font-size:10px;
+}
+@media(max-width:720px){
+  .social-link-note{margin:0 0 12px}
+  .social-stable-preview{height:225px!important;min-height:225px!important}
+}
+</style></head>
 <body><div aria-hidden="true" class="page-gradient-mesh">
 <span class="mesh-orb mesh-orb-1"></span>
 <span class="mesh-orb mesh-orb-2"></span>
@@ -828,7 +832,7 @@ body{
 <p class="lead">Este boletín reúne los principales avances de la respuesta financiada por el Fondo Humanitario Guatemala, integrando seguridad alimentaria, salud y nutrición, agua, saneamiento e higiene, y participación comunitaria.</p>
 <div class="hero-tags"><span>Huehuetenango</span><span>Chiquimula</span><span>Transferencias monetarias</span><span>Salud y nutrición</span><span>WASH</span><span>CFM</span></div>
 </div>
-<div class="hero-media glass"><div class="coverflow" data-delay="3600"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/vM2cpKH/Cobro-de-transferencias-Huehueteanngo-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/qMskwNHY/Atencion-a-infante-Sy-N-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/1tbzGgx9/Ecofiltros-WASH-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/7tFjj5LF/Salud-mostrando-como-usar-CFM-2.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/8nsYdyVq/cobro-de-Transferencias-Chiquimula-3.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/20VD4sdc/Entrega-Kits-y-Filtros-Chiquimula-2.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/67Dvfr7c/Visita-a-hogar-Sy-N-Huehue-2-Large.jpg"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
+<div class="hero-media glass"><div class="coverflow" data-delay="3600"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/vM2cpKH/Cobro-de-transferencias-Huehueteanngo-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/vM2cpKH/Cobro-de-transferencias-Huehueteanngo-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/qMskwNHY/Atencion-a-infante-Sy-N-Huehue-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/qMskwNHY/Atencion-a-infante-Sy-N-Huehue-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/1tbzGgx9/Ecofiltros-WASH-Huehue-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/1tbzGgx9/Ecofiltros-WASH-Huehue-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/7tFjj5LF/Salud-mostrando-como-usar-CFM-2.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/7tFjj5LF/Salud-mostrando-como-usar-CFM-2.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/8nsYdyVq/cobro-de-Transferencias-Chiquimula-3.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/8nsYdyVq/cobro-de-Transferencias-Chiquimula-3.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/20VD4sdc/Entrega-Kits-y-Filtros-Chiquimula-2.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/20VD4sdc/Entrega-Kits-y-Filtros-Chiquimula-2.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/67Dvfr7c/Visita-a-hogar-Sy-N-Huehue-2-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/67Dvfr7c/Visita-a-hogar-Sy-N-Huehue-2-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
 </div>
 <div class="hero-summary">
 <div><b>6,272</b><span>transferencias entregadas acumuladas hasta la segunda entrega</span></div>
@@ -866,7 +870,7 @@ body{
 <div class="bullet"><ul><li>Hasta la segunda entrega se reportan 6,272 transferencias entregadas a 3,136 hogares; con un valor de USD 150 por transferencia, el monto acumulado equivale a USD 940,800.</li><li>La coordinación con las comunidades facilitó la asistencia y la organización en puntos de atención.</li><li>El PDM (monitoreo postdistribución) ayudó a conocer el uso del efectivo y la percepción de utilidad del apoyo.</li><li>La modalidad continúa siendo clave para fortalecer resiliencia y capacidad de respuesta en los hogares.</li></ul></div>
 <div class="voice"><span>Voz ilustrativa de la población</span><p>Ahora el apoyo llegó más cerca y sentimos que el proceso fue más claro y ordenado para nuestras familias.</p></div>
 </div>
-<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/8nsYdyVq/cobro-de-Transferencias-Chiquimula-3.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/pjHY4YSs/Cobro-de-transferencias-Chiquimula-4.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/vM2cpKH/Cobro-de-transferencias-Huehueteanngo-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/v6D3Qb9C/Cobro-de-transferencias-Huehuetenango-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/svCFM5fj/Cobro-de-trasferencias-Chiquimula.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/TqhqbPJw/Cobro-de-transferencias-Huehueteanngo.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/jv173BKC/Cobro-de-transferencias-Huehuetenango.jpg"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
+<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/8nsYdyVq/cobro-de-Transferencias-Chiquimula-3.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/8nsYdyVq/cobro-de-Transferencias-Chiquimula-3.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/pjHY4YSs/Cobro-de-transferencias-Chiquimula-4.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/pjHY4YSs/Cobro-de-transferencias-Chiquimula-4.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/vM2cpKH/Cobro-de-transferencias-Huehueteanngo-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/vM2cpKH/Cobro-de-transferencias-Huehueteanngo-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/v6D3Qb9C/Cobro-de-transferencias-Huehuetenango-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/v6D3Qb9C/Cobro-de-transferencias-Huehuetenango-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/svCFM5fj/Cobro-de-trasferencias-Chiquimula.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/svCFM5fj/Cobro-de-trasferencias-Chiquimula.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/TqhqbPJw/Cobro-de-transferencias-Huehueteanngo.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/TqhqbPJw/Cobro-de-transferencias-Huehueteanngo.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/jv173BKC/Cobro-de-transferencias-Huehuetenango.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/jv173BKC/Cobro-de-transferencias-Huehuetenango.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
 </div>
 </section>
 <section class="sector reveal">
@@ -878,7 +882,7 @@ body{
 <div class="bullet"><ul><li>Se realizaron actividades comunitarias con tamizaje y orientación nutricional.</li><li>Las visitas y seguimientos familiares reforzaron recomendaciones prácticas de cuidado.</li><li>La cercanía territorial facilitó la participación de cuidadores y niños y niñas.</li><li>La atención permitió fortalecer prevención, monitoreo y referencia cuando fue necesario.</li></ul></div>
 <div class="voice"><span>Voz ilustrativa de la población</span><p>Que revisen a nuestros niños aquí en la comunidad nos da tranquilidad y nos ayuda a actuar a tiempo.</p></div>
 </div>
-<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/LDP6spxk/Salud-y-nutrici-n-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/qMskwNHY/Atencion-a-infante-Sy-N-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/FF6L864/Atencion-ach-Sy-N-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/67Dvfr7c/Visita-a-hogar-Sy-N-Huehue-2-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/tTTJJrDj/Visita-a-hogar-Sy-N-Huehue-3-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/hFC4GwLH/Visita-a-hogar-Sy-N-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/0jzGvKcK/Salud-y-nutrici-n-Huehue.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/R43hMMTq/Atencion-a-infante-Sy-N-Huehue.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/jvbjXNqh/Atencion-ach-Sy-N-Huehue.jpg"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
+<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/LDP6spxk/Salud-y-nutrici-n-Huehue-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/LDP6spxk/Salud-y-nutrici-n-Huehue-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/qMskwNHY/Atencion-a-infante-Sy-N-Huehue-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/qMskwNHY/Atencion-a-infante-Sy-N-Huehue-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/FF6L864/Atencion-ach-Sy-N-Huehue-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/FF6L864/Atencion-ach-Sy-N-Huehue-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/67Dvfr7c/Visita-a-hogar-Sy-N-Huehue-2-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/67Dvfr7c/Visita-a-hogar-Sy-N-Huehue-2-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/tTTJJrDj/Visita-a-hogar-Sy-N-Huehue-3-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/tTTJJrDj/Visita-a-hogar-Sy-N-Huehue-3-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/hFC4GwLH/Visita-a-hogar-Sy-N-Huehue-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/hFC4GwLH/Visita-a-hogar-Sy-N-Huehue-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/0jzGvKcK/Salud-y-nutrici-n-Huehue.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/0jzGvKcK/Salud-y-nutrici-n-Huehue.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/R43hMMTq/Atencion-a-infante-Sy-N-Huehue.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/R43hMMTq/Atencion-a-infante-Sy-N-Huehue.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/jvbjXNqh/Atencion-ach-Sy-N-Huehue.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/jvbjXNqh/Atencion-ach-Sy-N-Huehue.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
 </div>
 </section>
 <section class="sector reveal">
@@ -890,7 +894,7 @@ body{
 <div class="bullet"><ul><li>Se distribuyeron kits de higiene y ecofiltros con demostraciones orientadas a su uso adecuado.</li><li>Se mantiene activa una campaña radial para difundir mensajes clave sobre el uso y almacenamiento seguro del agua.</li><li>Al corte de septiembre se reportan 3 de 18 intervenciones completadas: 1 obra WASH terminada y 2 mejoras en puestos de salud. Además, 1 sistema de agua cuenta con contrato de obra para avanzar hacia el total planificado.</li><li>El acompañamiento técnico refuerza mantenimiento, apropiación y uso continuo.</li><li>La integración de mensajes WASH con otras acciones del proyecto amplía su impacto preventivo.</li></ul></div>
 <div class="voice"><span>Voz ilustrativa de la población</span><p>Cuando nos explican cómo usar el ecofiltro y cómo almacenar el agua, sentimos que el apoyo realmente nos sirve para el día a día.</p></div>
 </div>
-<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/1tbzGgx9/Ecofiltros-WASH-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/whYgg1Yw/Ecofiltros-individuales-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/20VD4sdc/Entrega-Kits-y-Filtros-Chiquimula-2.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/nM6J9VdL/Entrega-kits-y-filtros.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/mF076SKb/Entrega-Kits-y-Filtros-Huehuetenango-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/ymcfjQzW/Entrega-Kits-y-Filtros-Chiquimula.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/99JgC2rJ/Entrega-con-Policia-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/TFkV7T8/Entrega-con-Policia-Huehue.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/4gSf0rqF/Ecofiltros-individuales-Huehue.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/7xpJntCK/Ecofiltros-WASH-Huehue.jpg"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
+<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/1tbzGgx9/Ecofiltros-WASH-Huehue-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/1tbzGgx9/Ecofiltros-WASH-Huehue-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/whYgg1Yw/Ecofiltros-individuales-Huehue-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/whYgg1Yw/Ecofiltros-individuales-Huehue-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/20VD4sdc/Entrega-Kits-y-Filtros-Chiquimula-2.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/20VD4sdc/Entrega-Kits-y-Filtros-Chiquimula-2.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/nM6J9VdL/Entrega-kits-y-filtros.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/nM6J9VdL/Entrega-kits-y-filtros.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/mF076SKb/Entrega-Kits-y-Filtros-Huehuetenango-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/mF076SKb/Entrega-Kits-y-Filtros-Huehuetenango-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/ymcfjQzW/Entrega-Kits-y-Filtros-Chiquimula.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/ymcfjQzW/Entrega-Kits-y-Filtros-Chiquimula.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/99JgC2rJ/Entrega-con-Policia-Huehue-Large.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/99JgC2rJ/Entrega-con-Policia-Huehue-Large.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/TFkV7T8/Entrega-con-Policia-Huehue.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/TFkV7T8/Entrega-con-Policia-Huehue.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/4gSf0rqF/Ecofiltros-individuales-Huehue.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/4gSf0rqF/Ecofiltros-individuales-Huehue.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/7xpJntCK/Ecofiltros-WASH-Huehue.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/7xpJntCK/Ecofiltros-WASH-Huehue.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
 </div><section aria-labelledby="radioHubTitle" class="radio-hub glass">
 <div class="radio-hub-head">
 <div aria-hidden="true" class="radio-hub-icon">
@@ -987,14 +991,10 @@ body{
 <div class="bullet"><ul><li>Se fortaleció la socialización del mecanismo en actividades y espacios comunitarios.</li><li>La población recibió información sobre cómo usar los canales de retroalimentación.</li><li>Las participaciones registradas facilitan el seguimiento y la mejora continua de la respuesta.</li><li>El componente contribuye a relaciones más transparentes entre el proyecto y las comunidades.</li></ul></div>
 <div class="voice"><span>Voz ilustrativa de la población</span><p>Nos sentimos escuchadas cuando sabemos dónde dejar nuestras dudas y vemos que sí toman en cuenta lo que decimos.</p></div>
 </div>
-<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/gZS86nS4/Salud-mostrando-como-uasr-CFM.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/7tFjj5LF/Salud-mostrando-como-usar-CFM-2.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/VYS4SSt1/Salud-mostrando-como-usar-CFM-3.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/KxbJZGMW/Buz-n-1.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/zhPMz7kH/Buz-n-1.jpg"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
+<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/gZS86nS4/Salud-mostrando-como-uasr-CFM.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/gZS86nS4/Salud-mostrando-como-uasr-CFM.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/7tFjj5LF/Salud-mostrando-como-usar-CFM-2.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/7tFjj5LF/Salud-mostrando-como-usar-CFM-2.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/VYS4SSt1/Salud-mostrando-como-usar-CFM-3.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/VYS4SSt1/Salud-mostrando-como-usar-CFM-3.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/KxbJZGMW/Buz-n-1.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/KxbJZGMW/Buz-n-1.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/><img alt="Fotografía del proyecto" class="cf-photo" data-original-src="https://i.ibb.co/zhPMz7kH/Buz-n-1.jpg" loading="lazy" src="https://images.weserv.nl/?url=i.ibb.co/zhPMz7kH/Buz-n-1.jpg&amp;w=1600&amp;output=jpg&amp;q=86"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
 </div>
 </section>
 <section class="territory glass reveal">
 <h2>Retos, aprendizajes y próximos pasos</h2>
 <p>Los reportes evidencian una respuesta con avances sólidos y aprendizajes valiosos. También señalan que la calidad de la coordinación logística, el acceso territorial, la validación de datos y la comunicación con la población continúan siendo factores determinantes para sostener una implementación eficaz y sensible al contexto.</p>
 <div class="territory-grid">
-<div class="territory-card"><h3>Retos operativos</h3><ul><li>Acceso a comunidades y tiempos de traslado.</li><li>Actualización y verificación de listados y registros.</li><li>Logística de materiales e insumos sectoriales.</li><li>Seguimiento continuo a casos y retroalimentación recibida.</li></ul></div>
-<div class="territory-card"><h3>Aprendizajes y continuidad</h3><ul><li>La coordinación temprana con comunidades mejora la participación.</li><li>Las demostraciones prácticas fortalecen apropiación y uso de insumos.</li><li>La atención integrada agrega valor a la experiencia de las familias.</li><li>La escucha activa mediante CFM mejora la calidad de la respuesta.</li></ul></div>
-</div>
-</section>
