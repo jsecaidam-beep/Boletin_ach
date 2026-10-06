@@ -201,6 +201,74 @@ h1,h2,h3,.issue,.eyebrow,.kpi strong,.stat b,.hero-summary b{font-family:"Futura
 .radio-days{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.radio-day{padding:12px 13px;border-radius:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14)}.radio-day h4{margin:0 0 8px;font:900 12px/1 "Futura","Roboto",sans-serif;letter-spacing:.8px;color:#fff}.radio-day dl{margin:0}.radio-day dl div{display:grid;grid-template-columns:95px minmax(0,1fr);gap:8px;padding:6px 0;border-top:1px solid rgba(255,255,255,.11)}.radio-day dl div:first-child{border-top:0}.radio-day dt{font-size:11px;font-weight:800;color:#d6f4ff}.radio-day dd{margin:0;font-size:11px;line-height:1.4;color:#fff}
 @media(max-width:720px){.radio-campaign-toggle{grid-template-columns:auto minmax(0,1fr);padding:14px}.radio-campaign-cta{grid-column:1/-1;justify-self:start}.radio-stations,.radio-days{grid-template-columns:1fr}.radio-overview{grid-template-columns:1fr}.radio-pulse{display:none}}
 @media(prefers-reduced-motion:reduce){.radio-campaign-icon::before,.radio-campaign-icon::after,.radio-pulse span{animation:none}}
+</style><style>
+/* --- Radio hub v2: full-width, live status and official schedules --- */
+.radio-hub{margin-top:18px;padding:24px;border-radius:32px;overflow:hidden;background:linear-gradient(145deg,rgba(236,252,255,.92),rgba(213,245,249,.78));border:1px solid rgba(255,255,255,.8);box-shadow:0 22px 48px rgba(0,70,105,.14)}
+.radio-hub-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;padding:3px 2px 20px}
+.radio-hub-icon{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(145deg,#52AE32,#079bb9);box-shadow:0 16px 34px rgba(18,140,112,.25);position:relative}
+.radio-hub-icon svg{width:32px;height:32px;position:relative;z-index:2}.radio-hub-icon:before,.radio-hub-icon:after{content:"";position:absolute;border:1.5px solid rgba(255,255,255,.72);border-radius:50%;animation:radioWave2 2.5s ease-out infinite}.radio-hub-icon:before{width:88px;height:88px}.radio-hub-icon:after{width:108px;height:108px;animation-delay:.8s}@keyframes radioWave2{0%{opacity:.72;transform:scale(.72)}70%,100%{opacity:0;transform:scale(1.05)}}
+.radio-hub-title>span{display:block;color:#0870bd;font:900 10px/1.1 "Futura","Roboto",sans-serif;letter-spacing:1.5px;text-transform:uppercase}.radio-hub-title h3{margin:5px 0 6px;color:#104f6d;font:900 29px/1 "Futura","Roboto",sans-serif;text-transform:uppercase}.radio-hub-title p{margin:0;max-width:760px;color:#4f7488;font-size:13px;line-height:1.6}.radio-hub-title b{color:#e35135}
+.radio-clock{min-width:145px;padding:13px 15px;border-radius:20px;text-align:center;background:linear-gradient(145deg,#075f9c,#099db4);color:#fff;box-shadow:0 12px 28px rgba(0,88,130,.18)}.radio-clock small,.radio-clock span{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.9px;opacity:.8}.radio-clock strong{display:block;margin:4px 0 3px;font:900 27px/1 "Futura","Roboto",sans-serif}
+.radio-live-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.radio-live-card{position:relative;min-width:0;padding:17px;border-radius:22px;background:linear-gradient(160deg,rgba(255,255,255,.97),rgba(232,249,253,.90));border:1px solid rgba(0,95,182,.12);box-shadow:0 14px 30px rgba(0,82,116,.09);display:flex;flex-direction:column;transition:transform .22s ease,box-shadow .22s ease}.radio-live-card:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(0,82,116,.14)}
+.radio-card-top{display:flex;justify-content:space-between;align-items:center;gap:8px}.radio-frequency{display:inline-flex;padding:6px 9px;border-radius:999px;background:#e7f6fb;color:#0870bd;font:900 10px/1 "Futura","Roboto",sans-serif;letter-spacing:.4px}.radio-live-status{display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border-radius:999px;background:#eef5f7;color:#5f7885;font-size:9px;font-weight:900;letter-spacing:.55px;text-transform:uppercase}.radio-live-status.is-live{background:#fff0ec;color:#d94f32;box-shadow:0 0 0 1px rgba(217,79,50,.12) inset}.radio-live-status.is-live:before{content:"";width:7px;height:7px;border-radius:50%;background:#ee4e32;box-shadow:0 0 0 0 rgba(238,78,50,.5);animation:livePulse 1.5s infinite}@keyframes livePulse{70%{box-shadow:0 0 0 7px rgba(238,78,50,0)}}.radio-live-status.is-next{background:#eaf8f1;color:#318c57}.radio-live-status.is-monitoring{background:#eef3ff;color:#466db4}.radio-live-status.is-ended{background:#f3f3f3;color:#7c7c7c}
+.radio-card-name{margin-top:16px;min-height:57px}.radio-card-name strong{display:block;color:#0b5d8d;font:900 18px/1.08 "Futura","Roboto",sans-serif}.radio-card-name span{display:block;margin-top:5px;color:#66818f;font-size:11px;line-height:1.35}
+.radio-next{margin:13px 0 12px;padding:12px;border-radius:16px;background:linear-gradient(145deg,#0b6da9,#0d98b0);color:#fff}.radio-next small{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.8px;opacity:.78}.radio-next b{display:block;margin-top:3px;font:900 20px/1.05 "Futura","Roboto",sans-serif}.radio-live-card.is-live .radio-next{background:linear-gradient(145deg,#e45c35,#ef7a36)}
+.radio-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto}.radio-card-actions a,.radio-card-actions button{min-height:38px;border-radius:12px;border:0;display:flex;align-items:center;justify-content:center;padding:8px 9px;text-align:center;text-decoration:none;font-family:"Roboto",sans-serif;font-size:10px;font-weight:850;cursor:pointer}.radio-card-actions a{background:#52AE32;color:#fff}.radio-card-actions button{background:#e8f4f8;color:#0870bd;border:1px solid rgba(0,95,182,.11)}.radio-card-actions a:hover,.radio-card-actions button:hover{filter:brightness(.97)}
+.radio-card-meta{margin:10px 0 0;color:#7a909b;font-size:9.5px;line-height:1.4}
+.radio-hub-foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:14px;padding:11px 2px 0;border-top:1px solid rgba(0,95,182,.10);color:#698492;font-size:10px}.radio-hub-foot span:first-child{display:flex;align-items:center;gap:7px}.radio-hub-foot i{width:7px;height:7px;border-radius:50%;background:#52AE32;box-shadow:0 0 0 4px rgba(82,174,50,.12)}
+.radio-schedule-dialog{width:min(1040px,94vw);max-height:88vh;border:0;padding:0;border-radius:28px;background:transparent;box-shadow:0 34px 90px rgba(0,46,71,.28);overflow:visible}.radio-schedule-dialog::backdrop{background:rgba(3,45,67,.56);backdrop-filter:blur(8px)}.radio-dialog-shell{position:relative;max-height:88vh;overflow:auto;border-radius:28px;padding:25px;background:linear-gradient(145deg,#f8fdff,#e4f7fb);border:1px solid rgba(255,255,255,.9)}.radio-dialog-close{position:sticky;float:right;top:0;z-index:4;width:40px;height:40px;border:0;border-radius:50%;background:#0a689f;color:#fff;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 8px 20px rgba(0,81,120,.16)}.radio-dialog-kicker{display:block;color:#0870bd;font:900 10px/1 "Futura","Roboto",sans-serif;letter-spacing:1.4px;text-transform:uppercase}.radio-dialog-head h3{margin:6px 0 5px;color:#0b5f8e;font:900 30px/1 "Futura","Roboto",sans-serif}.radio-dialog-head p{margin:0;color:#63808f;font-size:12px;line-height:1.5;max-width:760px}.radio-dialog-today{margin:17px 0 12px;padding:14px 15px;border-radius:18px;background:linear-gradient(145deg,#075f9c,#0a9bb4);color:#fff}.radio-dialog-today strong{font-family:"Futura","Roboto",sans-serif}.radio-dialog-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.radio-date-row{padding:13px;border-radius:16px;background:#fff;border:1px solid #d9edf4}.radio-date-row.is-today{border-color:#52AE32;box-shadow:0 0 0 2px rgba(82,174,50,.09)}.radio-date-row h4{margin:0 0 8px;color:#0b5f8e;font:900 11px/1 "Futura","Roboto",sans-serif;text-transform:uppercase;letter-spacing:.5px}.radio-time-chips{display:flex;gap:5px;flex-wrap:wrap}.radio-time-chip{padding:5px 7px;border-radius:999px;background:#eaf7fb;color:#27657f;font-size:9px;font-weight:800}.radio-time-chip.is-live{background:#fff0eb;color:#d75232;box-shadow:0 0 0 1px rgba(215,82,50,.13) inset}
+@media(max-width:1050px){.radio-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.radio-hub{padding:18px}.radio-hub-head{grid-template-columns:auto 1fr}.radio-clock{grid-column:1/-1;width:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;text-align:left}.radio-clock strong{text-align:center}.radio-clock span{text-align:right}.radio-live-grid,.radio-dialog-list{grid-template-columns:1fr}.radio-card-actions{grid-template-columns:1fr}.radio-hub-icon{width:58px;height:58px}.radio-hub-icon:before,.radio-hub-icon:after{display:none}.radio-hub-title h3{font-size:24px}}
+@media(prefers-reduced-motion:reduce){.radio-hub-icon:before,.radio-hub-icon:after,.radio-live-status.is-live:before{animation:none}}
+</style><style>
+/* --- Radio hub v3: full-width live radio dashboard --- */
+.radio-hub{
+  width:min(1480px,calc(100vw - 22px));
+  margin:24px 0 0 50%;
+  transform:translateX(-50%);
+  padding:32px;
+  border-radius:38px;
+  background:
+    radial-gradient(circle at 88% 0%,rgba(82,174,50,.16),transparent 30%),
+    radial-gradient(circle at 0% 100%,rgba(9,154,215,.16),transparent 32%),
+    radial-gradient(circle at 48% 52%,rgba(255,255,255,.38),transparent 40%),
+    linear-gradient(145deg,rgba(244,253,255,.98),rgba(216,246,250,.90));
+}
+.radio-hub-head{grid-template-columns:auto minmax(0,1fr) 210px;gap:24px;padding:4px 4px 26px}
+.radio-hub-title h3{font-size:clamp(32px,3vw,42px);letter-spacing:-.9px}
+.radio-hub-title p{max-width:980px;font-size:14px;line-height:1.64}
+.radio-summary-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.radio-summary-pills span{display:inline-flex;align-items:center;gap:5px;padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.74);border:1px solid rgba(0,95,182,.10);color:#527488;font-size:10px;font-weight:750}
+.radio-summary-pills b{color:#0870bd;font-family:"Futura","Roboto",sans-serif}
+.radio-clock{min-width:200px;padding:18px 18px}.radio-clock strong{font-size:34px}
+.radio-live-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.radio-live-card{min-height:294px;padding:22px 23px;border-radius:28px;overflow:hidden}
+.radio-live-card::after{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#52AE32,#099ad7);opacity:.88}
+.radio-live-card[data-station="coqueta"]::after{background:linear-gradient(90deg,#EE7203,#099ad7)}
+.radio-live-card[data-station="creativa"]::after{background:linear-gradient(90deg,#52AE32,#8dd955)}
+.radio-live-card[data-station="xpresat"]::after{background:linear-gradient(90deg,#099ad7,#005FB6)}
+.radio-card-name{margin-top:18px;min-height:auto}.radio-card-name strong{font-size:24px}.radio-card-name span{font-size:12px}
+.radio-card-top{padding-top:2px}.radio-frequency{font-size:11px;padding:7px 10px}.radio-live-status{font-size:10px;padding:7px 10px}
+.radio-next{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;margin:15px 0 7px;padding:15px 16px;border-radius:18px}
+.radio-next small{font-size:10px;align-self:center}.radio-next b{font-size:clamp(21px,2vw,29px);text-align:right;white-space:nowrap}
+.radio-countdown{display:block;margin:0 0 12px;padding-left:3px;color:#5c798b;font-size:11px;font-weight:700;min-height:16px}
+.radio-countdown.is-live{color:#d54b2d}.radio-countdown.is-ended{color:#7f9099}
+.radio-mini-schedule{margin:0 0 14px;padding:11px 12px;border-radius:15px;background:rgba(231,247,251,.78);border:1px solid rgba(0,95,182,.08)}
+.radio-mini-label{display:block;margin-bottom:6px;color:#66818f;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.8px}
+.radio-mini-times{display:flex;flex-wrap:wrap;gap:5px;min-height:24px;align-items:center}
+.radio-mini-times span{padding:5px 7px;border-radius:999px;background:#fff;color:#246580;font-size:10px;font-weight:850;border:1px solid rgba(0,95,182,.09)}
+.radio-mini-times span.is-soon{background:#e8f7ef;color:#2e8554;border-color:rgba(82,174,50,.18)}
+.radio-mini-times span.is-live{background:#fff0eb;color:#d64d30;border-color:rgba(238,114,3,.22)}
+.radio-mini-times i{font-style:normal;color:#78909b;font-size:10px}
+.radio-card-actions{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:9px}.radio-card-actions a,.radio-card-actions button{min-height:43px;font-size:11px;border-radius:14px}
+.radio-card-meta{margin-top:12px;font-size:10px}
+.radio-hub-foot{font-size:10.5px;margin-top:16px;padding-top:13px}
+.radio-schedule-dialog{width:min(1180px,95vw)}
+.radio-dialog-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media(max-width:1280px){.radio-hub{width:min(98vw,1280px)}.radio-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.radio-dialog-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1080px){.radio-hub-head{grid-template-columns:auto minmax(0,1fr)}.radio-clock{grid-column:1/-1;width:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}.radio-clock strong{text-align:center}.radio-clock span{text-align:right}}
+@media(max-width:780px){.radio-hub{width:100%;margin-left:0;transform:none;padding:18px;border-radius:28px}.radio-live-grid,.radio-dialog-list{grid-template-columns:1fr}.radio-hub-head{gap:14px}.radio-hub-title h3{font-size:28px}.radio-next{grid-template-columns:1fr}.radio-next b{text-align:left}.radio-card-actions{grid-template-columns:1fr}.radio-live-card{min-height:0;padding:19px}.radio-summary-pills{gap:5px}.radio-summary-pills span{font-size:9px}}
 </style></head>
 <body>
 <div class="bg-float"></div><div class="wave w1"></div><div class="wave w2"></div><div class="wave w3"></div>
@@ -282,75 +350,95 @@ h1,h2,h3,.issue,.eyebrow,.kpi strong,.stat b,.hero-summary b{font-family:"Futura
 <p class="sector-intro">El avance del componente WASH combina soluciones concretas para acceso a agua segura con acciones de promoción de higiene. La entrega de ecofiltros, kits de higiene y el seguimiento a obras permiten reducir riesgos sanitarios y fortalecer capacidades en el hogar y en los espacios comunitarios.</p>
 <div class="stats"><div class="stat"><b>2,482</b><span>kits de higiene entregados de forma global</span></div><div class="stat"><b>260</b><span>ecofiltros entregados de forma global</span></div><div class="stat"><b>3/18</b><span>intervenciones completadas (1 obra WASH y 2 mejoras en puestos de salud)</span></div><div class="stat"><b>785</b><span>personas con acceso a agua apta para consumo mediante un sistema finalizado</span></div></div>
 <div class="bullet"><ul><li>Se distribuyeron kits de higiene y ecofiltros con demostraciones orientadas a su uso adecuado.</li><li>Se mantiene activa una campaña radial para difundir mensajes clave sobre el uso y almacenamiento seguro del agua.</li><li>Al corte de septiembre se reportan 3 de 18 intervenciones completadas: 1 obra WASH terminada y 2 mejoras en puestos de salud. Además, 1 sistema de agua cuenta con contrato de obra para avanzar hacia el total planificado.</li><li>El acompañamiento técnico refuerza mantenimiento, apropiación y uso continuo.</li><li>La integración de mensajes WASH con otras acciones del proyecto amplía su impacto preventivo.</li></ul></div>
-<div class="radio-campaign glass">
-<button aria-expanded="false" class="radio-campaign-toggle" type="button">
-<span aria-hidden="true" class="radio-campaign-icon">
+<div class="voice"><span>Voz ilustrativa de la población</span><p>Cuando nos explican cómo usar el ecofiltro y cómo almacenar el agua, sentimos que el apoyo realmente nos sirve para el día a día.</p></div>
+</div>
+<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/1tbzGgx9/Ecofiltros-WASH-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/whYgg1Yw/Ecofiltros-individuales-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/20VD4sdc/Entrega-Kits-y-Filtros-Chiquimula-2.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/nM6J9VdL/Entrega-kits-y-filtros.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/mF076SKb/Entrega-Kits-y-Filtros-Huehuetenango-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/ymcfjQzW/Entrega-Kits-y-Filtros-Chiquimula.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/99JgC2rJ/Entrega-con-Policia-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/TFkV7T8/Entrega-con-Policia-Huehue.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/4gSf0rqF/Ecofiltros-individuales-Huehue.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/7xpJntCK/Ecofiltros-WASH-Huehue.jpg"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
+</div><section aria-labelledby="radioHubTitle" class="radio-hub glass">
+<div class="radio-hub-head">
+<div aria-hidden="true" class="radio-hub-icon">
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" viewbox="0 0 24 24">
 <path d="M5 8h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"></path>
 <path d="M8 8l7-5"></path><circle cx="8" cy="14" r="3"></circle><path d="M14 12h4M14 15h4M14 18h2"></path>
 </svg>
-</span>
-<span class="radio-campaign-copy">
-<small>Campaña radial activa</small>
-<strong>Mensajes clave sobre uso y almacenamiento seguro del agua</strong>
-<span>4 radios monitoreadas · difusión territorial y en línea</span>
-</span>
-<span class="radio-campaign-cta">Ver radios y horarios <b aria-hidden="true">+</b></span>
-</button>
-<div class="radio-campaign-panel" hidden="">
-<div class="radio-overview">
-<div>
-<span class="radio-kicker">Difusión en curso</span>
-<h3>Campaña radial WASH</h3>
-<p>La campaña difunde mensajes clave relacionados con el uso y almacenamiento seguro del agua. El monitoreo registrado corresponde a emisiones verificadas entre el 16 y el 23 de septiembre de 2026.</p>
 </div>
-<div aria-hidden="true" class="radio-pulse"><span></span><span></span><span></span></div>
-</div>
-<div class="radio-stations">
-<a class="radio-station" href="https://www.radios-guatemala.com/globo-oriente" rel="noopener noreferrer" target="_blank">
-<span class="radio-frequency">94.7 FM</span><strong>FM Globo</strong><small>Chiquimula y Zacapa</small><span class="radio-link">Escuchar en línea ↗</span>
-</a>
-<a class="radio-station" href="https://www.radios-guatemala.com/search?q=coqueta#google_vignette" rel="noopener noreferrer" target="_blank">
-<span class="radio-frequency">103.9 FM</span><strong>FM Coqueta</strong><small>Chiquimula y Zacapa</small><span class="radio-link">Escuchar en línea ↗</span>
-</a>
-<a class="radio-station" href="https://www.radios-guatemala.com/radio-creativa-981-fm" rel="noopener noreferrer" target="_blank">
-<span class="radio-frequency">98.1 FM</span><strong>FM Creativa</strong><small>Huehuetenango, Quetzaltenango y San Marcos</small><span class="radio-link">Escuchar en línea ↗</span>
-</a>
-<a class="radio-station" href="http://www.xpresatguate.com" rel="noopener noreferrer" target="_blank">
-<span class="radio-frequency">Online</span><strong>Xpresat Guate Radio</strong><small>Guatemala y el mundo</small><span class="radio-link">Escuchar en línea ↗</span>
-</a>
-</div>
-<div class="radio-schedule-wrap">
-<div class="radio-schedule-head">
-<div><span class="radio-kicker">Monitoreo de pauta</span><h3>Horarios registrados</h3></div>
-<span class="radio-schedule-note">Septiembre 2026</span>
-</div>
-<div class="radio-days">
-<article class="radio-day"><h4>16 SEP</h4><dl>
-<div><dt>Globo</dt><dd>11:42</dd></div><div><dt>Coqueta</dt><dd>09:20</dd></div><div><dt>Creativa</dt><dd>06:00 · 08:00 · 10:00 · 13:30 · 16:00</dd></div><div><dt>Xpresat Guate</dt><dd>06:00–22:00</dd></div>
-</dl></article>
-<article class="radio-day"><h4>17 SEP</h4><dl>
-<div><dt>Globo</dt><dd>10:44 · 11:04</dd></div><div><dt>Coqueta</dt><dd>11:30</dd></div><div><dt>Creativa</dt><dd>06:00 · 08:00 · 10:00 · 13:30 · 16:00</dd></div><div><dt>Xpresat Guate</dt><dd>06:00–22:00</dd></div>
-</dl></article>
-<article class="radio-day"><h4>18 SEP</h4><dl>
-<div><dt>Globo</dt><dd>17:00</dd></div><div><dt>Coqueta</dt><dd>15:05</dd></div><div><dt>Creativa</dt><dd>06:20 · 07:00 · 09:20 · 15:20 · 16:40</dd></div><div><dt>Xpresat Guate</dt><dd>06:00–22:00</dd></div>
-</dl></article>
-<article class="radio-day"><h4>21 SEP</h4><dl>
-<div><dt>Globo</dt><dd>10:02 · 15:51</dd></div><div><dt>Coqueta</dt><dd>11:35 · 15:36</dd></div><div><dt>Creativa</dt><dd>06:20 · 07:00 · 09:20 · 15:20 · 16:40</dd></div><div><dt>Xpresat Guate</dt><dd>06:00–22:00</dd></div>
-</dl></article>
-<article class="radio-day"><h4>22 SEP</h4><dl>
-<div><dt>Globo</dt><dd>08:09 · 15:53</dd></div><div><dt>Coqueta</dt><dd>15:36</dd></div><div><dt>Creativa</dt><dd>15:20 · 17:05</dd></div><div><dt>Xpresat Guate</dt><dd>06:00–22:00</dd></div>
-</dl></article>
-<article class="radio-day"><h4>23 SEP</h4><dl>
-<div><dt>Globo</dt><dd>11:06 · 17:06</dd></div><div><dt>Coqueta</dt><dd>17:02</dd></div><div><dt>Creativa</dt><dd>06:20 · 07:00 · 09:20 · 15:20 · 16:40</dd></div><div><dt>Xpresat Guate</dt><dd>06:00–22:00</dd></div>
-</dl></article>
+<div class="radio-hub-title">
+<span>Campaña radial activa</span>
+<h3 id="radioHubTitle">Agua segura al aire</h3>
+<p>Difusión de mensajes clave sobre uso y almacenamiento seguro del agua. El estado de cada radio se actualiza con la hora de Guatemala: muestra <b>EN VIVO</b> durante el minuto programado y, fuera de ese momento, indica la siguiente emisión.</p>
+<div class="radio-summary-pills">
+<span><b>1,092</b> spots programados en Globo + Coqueta</span>
+<span><b>16 SEP–14 NOV</b> periodo de pauta oficial</span>
+<span><b>UTC−6</b> hora de Guatemala</span>
+</div></div>
+<div class="radio-clock">
+<small>Hora Guatemala</small>
+<strong data-gt-time="">--:--</strong>
+<span data-gt-date="">Actualizando…</span>
 </div>
 </div>
+<div class="radio-live-grid">
+<article class="radio-live-card" data-station="globo">
+<div class="radio-card-top"><span class="radio-frequency">94.7 FM</span><span class="radio-live-status" data-radio-status="">Calculando…</span></div>
+<div class="radio-card-name"><strong>FM Globo Oriente</strong><span>Chiquimula y Zacapa</span></div>
+<div class="radio-next"><small data-next-label="">Próxima emisión</small><b data-next-time="">--:--</b></div>
+<span class="radio-countdown" data-countdown="">Actualizando…</span>
+<div class="radio-mini-schedule">
+<span class="radio-mini-label" data-mini-label="">Próximos horarios</span>
+<div class="radio-mini-times" data-mini-times=""><i>Actualizando…</i></div>
+</div><div class="radio-card-actions">
+<a href="https://www.radios-guatemala.com/globo-oriente" rel="noopener noreferrer" target="_blank">Escuchar ahora ↗</a>
+<button data-open-schedule="globo" type="button">Ver horario completo</button>
 </div>
-</div><div class="voice"><span>Voz ilustrativa de la población</span><p>Cuando nos explican cómo usar el ecofiltro y cómo almacenar el agua, sentimos que el apoyo realmente nos sirve para el día a día.</p></div>
+<p class="radio-card-meta">Pauta oficial · 16 SEP–14 NOV 2026 · 832 spots programados</p>
+</article>
+<article class="radio-live-card" data-station="coqueta">
+<div class="radio-card-top"><span class="radio-frequency">103.9 FM</span><span class="radio-live-status" data-radio-status="">Calculando…</span></div>
+<div class="radio-card-name"><strong>FM Coqueta</strong><span>Chiquimula y Zacapa</span></div>
+<div class="radio-next"><small data-next-label="">Próxima emisión</small><b data-next-time="">--:--</b></div>
+<span class="radio-countdown" data-countdown="">Actualizando…</span>
+<div class="radio-mini-schedule">
+<span class="radio-mini-label" data-mini-label="">Próximos horarios</span>
+<div class="radio-mini-times" data-mini-times=""><i>Actualizando…</i></div>
+</div><div class="radio-card-actions">
+<a href="https://www.radios-guatemala.com/search?q=coqueta#google_vignette" rel="noopener noreferrer" target="_blank">Escuchar ahora ↗</a>
+<button data-open-schedule="coqueta" type="button">Ver horario completo</button>
 </div>
-<div class="sector-media"><div class="coverflow" data-delay="4000"><div class="cf-stage"><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/1tbzGgx9/Ecofiltros-WASH-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/whYgg1Yw/Ecofiltros-individuales-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/20VD4sdc/Entrega-Kits-y-Filtros-Chiquimula-2.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/nM6J9VdL/Entrega-kits-y-filtros.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/mF076SKb/Entrega-Kits-y-Filtros-Huehuetenango-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/ymcfjQzW/Entrega-Kits-y-Filtros-Chiquimula.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/99JgC2rJ/Entrega-con-Policia-Huehue-Large.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/TFkV7T8/Entrega-con-Policia-Huehue.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/4gSf0rqF/Ecofiltros-individuales-Huehue.jpg"/><img alt="Fotografía del proyecto" class="cf-photo" loading="lazy" src="https://i.ibb.co/7xpJntCK/Ecofiltros-WASH-Huehue.jpg"/></div><button aria-label="Anterior" class="cf-nav cf-prev">‹</button><button aria-label="Siguiente" class="cf-nav cf-next">›</button><div class="cf-dots"></div></div></div>
+<p class="radio-card-meta">Pauta oficial · 16 SEP–14 NOV 2026 · 260 spots programados</p>
+</article>
+<article class="radio-live-card" data-station="creativa">
+<div class="radio-card-top"><span class="radio-frequency">98.1 FM</span><span class="radio-live-status is-monitoring" data-radio-status="">MONITOREO</span></div>
+<div class="radio-card-name"><strong>FM Creativa</strong><span>Huehuetenango, Quetzaltenango y San Marcos</span></div>
+<div class="radio-next"><small data-next-label="">Registros disponibles</small><b data-next-time="">16–23 SEP</b></div>
+<span class="radio-countdown" data-countdown="">Actualizando…</span>
+<div class="radio-mini-schedule">
+<span class="radio-mini-label" data-mini-label="">Horarios monitoreados</span>
+<div class="radio-mini-times" data-mini-times=""><i>Actualizando…</i></div>
+</div><div class="radio-card-actions">
+<a href="https://www.radios-guatemala.com/radio-creativa-981-fm" rel="noopener noreferrer" target="_blank">Escuchar ahora ↗</a>
+<button data-open-schedule="creativa" type="button">Ver horarios monitoreados</button>
 </div>
+<p class="radio-card-meta">Horarios de monitoreo disponibles del 16 al 23 SEP; sin pauta oficial futura cargada.</p>
+</article>
+<article class="radio-live-card" data-station="xpresat">
+<div class="radio-card-top"><span class="radio-frequency">ONLINE</span><span class="radio-live-status" data-radio-status="">Calculando…</span></div>
+<div class="radio-card-name"><strong>Xpresat Guate Radio</strong><span>Guatemala y el mundo</span></div>
+<div class="radio-next"><small data-next-label="">Próxima emisión</small><b data-next-time="">--:--</b></div>
+<span class="radio-countdown" data-countdown="">Actualizando…</span>
+<div class="radio-mini-schedule">
+<span class="radio-mini-label" data-mini-label="">Próximos horarios</span>
+<div class="radio-mini-times" data-mini-times=""><i>Actualizando…</i></div>
+</div><div class="radio-card-actions">
+<a href="http://www.xpresatguate.com" rel="noopener noreferrer" target="_blank">Sintonizar ↗</a>
+<button data-open-schedule="xpresat" type="button">Ver horario completo</button>
+</div>
+<p class="radio-card-meta">Todos los días · 06:00–22:00 · emisiones cada dos horas en punto</p>
+</article>
+</div>
+<div class="radio-hub-foot">
+<span><i></i> Estado calculado con hora de Guatemala (UTC−6).</span>
+<span>El indicador “EN VIVO” refleja el horario programado; no verifica la señal de audio en tiempo real.</span>
+</div>
+</section>
 </section>
 <section class="sector reveal">
 <div class="sector-head"><div class="circle-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" viewbox="0 0 24 24"><path d="M8 10h8"></path><path d="M8 14h5"></path><path d="M6 18l-3 3V7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6z"></path></svg></div><div><span>Componente</span><h2>Mecanismo de retroalimentación comunitaria (CFM)</h2></div></div>
@@ -625,5 +713,156 @@ html.photos-private .cf-photo,html.photos-private .photo-large{filter:blur(28px)
       }
     });
   });
+})();
+</script><dialog aria-labelledby="radioScheduleTitle" class="radio-schedule-dialog" id="radioScheduleDialog">
+<div class="radio-dialog-shell">
+<button aria-label="Cerrar horario" class="radio-dialog-close" type="button">×</button>
+<div class="radio-dialog-head">
+<span class="radio-dialog-kicker">Horario de pauta</span>
+<h3 id="radioScheduleTitle">Radio</h3>
+<p data-dialog-meta=""></p>
+</div>
+<div class="radio-dialog-today" data-dialog-today=""></div>
+<div class="radio-dialog-list" data-dialog-list=""></div>
+</div>
+</dialog><script>
+(()=>{
+  const RADIO_DATA = window.RADIO_DATA = {"globo":{"name":"FM Globo Oriente","meta":"Pauta oficial del 16 de septiembre al 14 de noviembre de 2026 · 832 spots · hora de Guatemala.","mode":"official","schedule":{"2026-09-16":["16:40","17:00","17:00","17:20","17:20","17:40","17:40","18:00","18:00","18:20","18:20","18:40","18:40","19:20","19:40","20:00"],"2026-09-17":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-18":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-19":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-21":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-22":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-23":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-24":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-25":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-26":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-28":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-29":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-09-30":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-01":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-02":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-03":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-05":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-06":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-07":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-08":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-09":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-10":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-12":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-13":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-14":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-15":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-16":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-17":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-19":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-20":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-21":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-22":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-23":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-24":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-26":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-27":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-28":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-29":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-30":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-10-31":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-02":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-03":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-04":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-05":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-06":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-07":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-09":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-10":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-11":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-12":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-13":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"],"2026-11-14":["06:00","07:00","07:40","08:00","08:40","09:00","09:40","10:00","10:40","11:00","11:40","12:00","15:00","15:40","16:40","17:00"]}},"coqueta":{"name":"FM Coqueta 103.9 FM","meta":"Pauta oficial del 16 de septiembre al 14 de noviembre de 2026 · 260 spots · hora de Guatemala.","mode":"official","schedule":{"2026-09-16":["16:45","17:00","17:15","17:30","17:45"],"2026-09-17":["08:00","10:00","11:30","15:30","17:00"],"2026-09-18":["08:00","10:00","11:30","15:30","17:00"],"2026-09-19":["08:00","10:00","11:30","15:30","17:00"],"2026-09-21":["08:00","10:00","11:30","15:30","17:00"],"2026-09-22":["08:00","10:00","11:30","15:30","17:00"],"2026-09-23":["08:00","10:00","11:30","15:30","17:00"],"2026-09-24":["08:00","10:00","11:30","15:30","17:00"],"2026-09-25":["08:00","10:00","11:30","15:30","17:00"],"2026-09-26":["08:00","10:00","11:30","15:30","17:00"],"2026-09-28":["08:00","10:00","11:30","15:30","17:00"],"2026-09-29":["08:00","10:00","11:30","15:30","17:00"],"2026-09-30":["08:00","10:00","11:30","15:30","17:00"],"2026-10-01":["08:00","10:00","11:30","15:30","17:00"],"2026-10-02":["08:00","10:00","11:30","15:30","17:00"],"2026-10-03":["08:00","10:00","11:30","15:30","17:00"],"2026-10-05":["08:00","10:00","11:30","15:30","17:00"],"2026-10-06":["08:00","10:00","11:30","15:30","17:00"],"2026-10-07":["08:00","10:00","11:30","15:30","17:00"],"2026-10-08":["08:00","10:00","11:30","15:30","17:00"],"2026-10-09":["08:00","10:00","11:30","15:30","17:00"],"2026-10-10":["08:00","10:00","11:30","15:30","17:00"],"2026-10-12":["08:00","10:00","11:30","15:30","17:00"],"2026-10-13":["08:00","10:00","11:30","15:30","17:00"],"2026-10-14":["08:00","10:00","11:30","15:30","17:00"],"2026-10-15":["08:00","10:00","11:30","15:30","17:00"],"2026-10-16":["08:00","10:00","11:30","15:30","17:00"],"2026-10-17":["08:00","10:00","11:30","15:30","17:00"],"2026-10-19":["08:00","10:00","11:30","15:30","17:00"],"2026-10-20":["08:00","10:00","11:30","15:30","17:00"],"2026-10-21":["08:00","10:00","11:30","15:30","17:00"],"2026-10-22":["08:00","10:00","11:30","15:30","17:00"],"2026-10-23":["08:00","10:00","11:30","15:30","17:00"],"2026-10-24":["08:00","10:00","11:30","15:30","17:00"],"2026-10-26":["08:00","10:00","11:30","15:30","17:00"],"2026-10-27":["08:00","10:00","11:30","15:30","17:00"],"2026-10-28":["08:00","10:00","11:30","15:30","17:00"],"2026-10-29":["08:00","10:00","11:30","15:30","17:00"],"2026-10-30":["08:00","10:00","11:30","15:30","17:00"],"2026-10-31":["08:00","10:00","11:30","15:30","17:00"],"2026-11-02":["08:00","10:00","11:30","15:30","17:00"],"2026-11-03":["08:00","10:00","11:30","15:30","17:00"],"2026-11-04":["08:00","10:00","11:30","15:30","17:00"],"2026-11-05":["08:00","10:00","11:30","15:30","17:00"],"2026-11-06":["08:00","10:00","11:30","15:30","17:00"],"2026-11-07":["08:00","10:00","11:30","15:30","17:00"],"2026-11-09":["08:00","10:00","11:30","15:30","17:00"],"2026-11-10":["08:00","10:00","11:30","15:30","17:00"],"2026-11-11":["08:00","10:00","11:30","15:30","17:00"],"2026-11-12":["08:00","10:00","11:30","15:30","17:00"],"2026-11-13":["08:00","10:00","11:30","15:30","17:00"],"2026-11-14":["08:00","10:00","11:30","15:30","17:00"]}},"creativa":{"name":"FM Creativa 98.1 FM","meta":"Horarios monitoreados disponibles del 16 al 23 de septiembre de 2026. No se infieren horarios futuros sin una pauta oficial.","mode":"monitoring","schedule":{"2026-09-16":["06:00","08:00","10:00","13:30","16:00"],"2026-09-17":["06:00","08:00","10:00","13:30","16:00"],"2026-09-18":["06:20","07:00","09:20","15:20","16:40"],"2026-09-21":["06:20","07:00","09:20","15:20","16:40"],"2026-09-22":["15:20","17:05"],"2026-09-23":["06:20","07:00","09:20","15:20","16:40"]}},"xpresat":{"name":"Xpresat Guate Radio Online","meta":"Pauta diaria: de 06:00 a 22:00, cada dos horas en punto · hora de Guatemala.","mode":"daily","dailyTimes":["06:00","08:00","10:00","12:00","14:00","16:00","18:00","20:00","22:00"]}};
+  const TZ='America/Guatemala';
+  const pad=n=>String(n).padStart(2,'0');
+  const gtParts=()=>{
+    const parts=new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23',weekday:'short'}).formatToParts(new Date());
+    const get=t=>parts.find(p=>p.type===t)?.value||'';
+    return {date:`${get('year')}-${get('month')}-${get('day')}`,time:`${get('hour')}:${get('minute')}`,hour:+get('hour'),minute:+get('minute')};
+  };
+  const isoToDate=iso=>new Date(`${iso}T12:00:00Z`);
+  const shortDate=iso=>new Intl.DateTimeFormat('es-GT',{day:'2-digit',month:'short',timeZone:'UTC'}).format(isoToDate(iso)).replace('.','').toUpperCase();
+  const longDate=iso=>new Intl.DateTimeFormat('es-GT',{weekday:'short',day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'}).format(isoToDate(iso)).replaceAll('.','');
+  const nextDateIso=iso=>{const d=isoToDate(iso);d.setUTCDate(d.getUTCDate()+1);return d.toISOString().slice(0,10)};
+  const groupedTimes=times=>{const m=new Map();(times||[]).forEach(t=>m.set(t,(m.get(t)||0)+1));return [...m.entries()].map(([t,n])=>({t,n}));};
+  const timeText=times=>groupedTimes(times).map(x=>x.t+(x.n>1?` ×${x.n}`:'')).join(' · ');
+
+  const toMinutes=t=>{const [h,m]=t.split(':').map(Number);return h*60+m};
+  const formatCountdown=min=>{
+    if(min<=0)return 'En este momento';
+    if(min<60)return `En ${min} min`;
+    const h=Math.floor(min/60),m=min%60;
+    return `En ${h} h${m?` ${m} min`:''}`;
+  };
+  function officialState(data,now){
+    const schedule=data.schedule||{};
+    const today=schedule[now.date]||[];
+    const nowMin=toMinutes(now.time);
+    if(today.includes(now.time))return {live:true,label:'EN VIVO',nextLabel:'Spot al aire',next:now.time,countdown:'Al aire ahora mismo'};
+    const todayNext=today.find(t=>t>now.time);
+    if(todayNext)return {live:false,label:'PROGRAMADO',nextLabel:'Próxima emisión',next:`HOY · ${todayNext}`,countdown:formatCountdown(toMinutes(todayNext)-nowMin)};
+    const dates=Object.keys(schedule).sort();
+    for(const d of dates){
+      if(d>now.date && schedule[d]?.length)return {live:false,label:'PROGRAMADO',nextLabel:'Próxima emisión',next:`${shortDate(d)} · ${schedule[d][0]}`,countdown:'Siguiente fecha programada'};
+    }
+    return {live:false,ended:true,label:'PAUTA FINALIZADA',nextLabel:'Periodo',next:'16 SEP–14 NOV',countdown:'No hay más emisiones cargadas'};
+  }
+  function dailyState(data,now){
+    const times=data.dailyTimes||[];
+    const nowMin=toMinutes(now.time);
+    if(times.includes(now.time))return {live:true,label:'EN VIVO',nextLabel:'Spot al aire',next:now.time,countdown:'Al aire ahora mismo'};
+    const nxt=times.find(t=>t>now.time);
+    if(nxt)return {live:false,label:'PROGRAMADO',nextLabel:'Próxima emisión',next:`HOY · ${nxt}`,countdown:formatCountdown(toMinutes(nxt)-nowMin)};
+    return {live:false,label:'PROGRAMADO',nextLabel:'Próxima emisión',next:`MAÑANA · ${times[0]}`,countdown:'Reinicia mañana a las 06:00'};
+  }
+  function updateClocks(){
+    const now=gtParts();
+    document.querySelectorAll('[data-gt-time]').forEach(el=>el.textContent=now.time);
+    document.querySelectorAll('[data-gt-date]').forEach(el=>el.textContent=longDate(now.date));
+    document.querySelectorAll('.radio-live-card').forEach(card=>{
+      const key=card.dataset.station,data=RADIO_DATA[key]; if(!data)return;
+      const status=card.querySelector('[data-radio-status]'),next=card.querySelector('[data-next-time]'),label=card.querySelector('[data-next-label]'),countdown=card.querySelector('[data-countdown]');
+      card.classList.remove('is-live');
+      if(data.mode==='monitoring'){
+        if(countdown){countdown.textContent='Consulta horarios observados en monitoreo.';countdown.className='radio-countdown';}
+        return;
+      }
+      const state=data.mode==='daily'?dailyState(data,now):officialState(data,now);
+      status.textContent=state.label; status.className='radio-live-status '+(state.live?'is-live':state.ended?'is-ended':'is-next');
+      label.textContent=state.nextLabel; next.textContent=state.next; card.classList.toggle('is-live',!!state.live);
+      if(countdown){countdown.textContent=state.countdown||'';countdown.className='radio-countdown'+(state.live?' is-live':state.ended?' is-ended':'');}
+    });
+  }
+
+  const dialog=document.getElementById('radioScheduleDialog');
+  const title=dialog?.querySelector('#radioScheduleTitle'),meta=dialog?.querySelector('[data-dialog-meta]'),todayBox=dialog?.querySelector('[data-dialog-today]'),list=dialog?.querySelector('[data-dialog-list]');
+  function renderSchedule(key){
+    const data=RADIO_DATA[key], now=gtParts(); if(!data||!dialog)return;
+    title.textContent=data.name; meta.textContent=data.meta; list.innerHTML='';
+    if(data.mode==='daily'){
+      todayBox.innerHTML=`<strong>Horario diario</strong><br>${data.dailyTimes.join(' · ')}<br><small>De 06:00 a 22:00, cada dos horas en punto.</small>`;
+      const row=document.createElement('article');row.className='radio-date-row';row.innerHTML=`<h4>Todos los días</h4><div class="radio-time-chips">${data.dailyTimes.map(t=>`<span class="radio-time-chip ${t===now.time?'is-live':''}">${t}</span>`).join('')}</div>`;list.append(row);
+    } else {
+      const schedule=data.schedule||{}; const today=schedule[now.date]||[];
+      todayBox.innerHTML=today.length?`<strong>Hoy · ${longDate(now.date)}</strong><br>${timeText(today)}`:`<strong>Hoy · ${longDate(now.date)}</strong><br>Sin horario cargado para esta fecha.`;
+      Object.keys(schedule).sort().forEach(d=>{
+        const row=document.createElement('article');row.className='radio-date-row'+(d===now.date?' is-today':'');
+        const chips=groupedTimes(schedule[d]).map(x=>`<span class="radio-time-chip ${(d===now.date&&x.t===now.time)?'is-live':''}">${x.t}${x.n>1?` ×${x.n}`:''}</span>`).join('');
+        row.innerHTML=`<h4>${longDate(d)}</h4><div class="radio-time-chips">${chips}</div>`;list.append(row);
+      });
+    }
+    dialog.showModal();
+  }
+  document.querySelectorAll('[data-open-schedule]').forEach(btn=>btn.addEventListener('click',()=>renderSchedule(btn.dataset.openSchedule)));
+  dialog?.querySelector('.radio-dialog-close')?.addEventListener('click',()=>dialog.close());
+  dialog?.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+  dialog?.addEventListener('cancel',e=>{e.preventDefault();dialog.close()});
+  updateClocks(); setInterval(updateClocks,15000);
+})();
+</script><script>
+(()=>{
+  const TZ='America/Guatemala';
+  const nowGT=()=>{
+    const ps=new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
+    const g=t=>ps.find(p=>p.type===t)?.value||'';
+    return {date:`${g('year')}-${g('month')}-${g('day')}`,time:`${g('hour')}:${g('minute')}`};
+  };
+  const uniq=a=>[...new Set(a||[])];
+  function miniPreview(){
+    const RADIO_DATA=window.RADIO_DATA;if(!RADIO_DATA)return;
+    const now=nowGT();
+    document.querySelectorAll('.radio-live-card').forEach(card=>{
+      const key=card.dataset.station,data=RADIO_DATA[key],box=card.querySelector('[data-mini-times]'),label=card.querySelector('[data-mini-label]');
+      if(!data||!box)return;
+      box.innerHTML='';
+      let times=[];
+      if(data.mode==='monitoring'){
+        const dates=Object.keys(data.schedule||{}).sort();
+        const last=dates.at(-1), vals=uniq((data.schedule||{})[last]||[]).slice(0,5);
+        if(label)label.textContent=last?`Último monitoreo · ${last.split('-').reverse().join('/')}`:'Horarios monitoreados';
+        times=vals;
+      } else if(data.mode==='daily'){
+        times=uniq(data.dailyTimes||[]);
+        if(label)label.textContent='Hoy · próximas emisiones';
+      } else {
+        times=uniq((data.schedule||{})[now.date]||[]);
+        if(label)label.textContent=times.length?'Hoy · próximas emisiones':'Próxima fecha con pauta';
+        if(!times.length){
+          const dates=Object.keys(data.schedule||{}).sort();
+          const d=dates.find(d=>d>now.date);
+          if(d){ times=uniq(data.schedule[d]||[]); if(label)label.textContent=`${d.split('-').reverse().join('/')} · primeras emisiones`; }
+        }
+      }
+      let shown=[];
+      if(data.mode==='monitoring') shown=times.slice(0,5);
+      else {
+        const upcoming=times.filter(t=>t>=now.time);
+        shown=(upcoming.length?upcoming:times).slice(0,5);
+      }
+      if(!shown.length){box.innerHTML='<i>Sin emisiones futuras cargadas.</i>';return;}
+      shown.forEach((t,i)=>{
+        const s=document.createElement('span');s.textContent=t;
+        if(t===now.time)s.className='is-live'; else if(i===0)s.className='is-soon';
+        box.append(s);
+      });
+      if(times.length>shown.length){const more=document.createElement('i');more.textContent=`+${times.length-shown.length} horarios`;box.append(more);}
+    });
+  }
+  miniPreview();setInterval(miniPreview,15000);
 })();
 </script></body></html>
