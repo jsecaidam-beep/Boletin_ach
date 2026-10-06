@@ -276,7 +276,57 @@ h1,h2,h3,.issue,.eyebrow,.kpi strong,.stat b,.hero-summary b{font-family:"Futura
 .lang-btn:hover{background:rgba(9,154,215,.1)}.lang-btn.is-active{color:#fff;background:linear-gradient(135deg,#52AE32,#099ad7);box-shadow:0 6px 14px rgba(9,154,215,.22)}
 .radio-plan-note{margin:-10px 4px 18px;padding:11px 14px;border-radius:16px;background:rgba(255,255,255,.62);border:1px solid rgba(0,95,182,.08);color:#627f90;font-size:10.5px;line-height:1.45}
 @media(max-width:780px){.language-switcher{top:10px;right:10px}.radio-plan-note{margin-top:-6px}}
-</style></head>
+</style>
+<style id="english-layout-fixes">
+/* English text can run longer than Spanish. These rules let cards grow instead of colliding. */
+.hero-grid>*,.sector-card>*,.kpis>*,.story-intro>*,.radio-live-grid>*,.stats>*{min-width:0}
+.hero-copy,.project-name,.lead,.kpi,.stat,.intro-card,.sector-copy,.radio-live-card,.radio-hub-title{overflow-wrap:break-word;word-break:normal}
+.hero h1 .title-main,.hero h1 .title-sub{display:block;max-width:100%;white-space:normal;text-wrap:balance;overflow-wrap:anywhere}
+.section-title h2,.sector-head h2,.intro-card h3,.territory h2,.radio-hub-title h3,.radio-card-name strong,.radio-dialog-head h3{text-wrap:balance;overflow-wrap:anywhere}
+.kpi,.stat,.intro-card,.sector-card,.radio-live-card{height:auto}
+.radio-card-name{min-height:0}
+.radio-next b{white-space:normal;overflow-wrap:anywhere}
+.radio-card-actions a,.radio-card-actions button{height:auto;line-height:1.25;white-space:normal}
+
+html[lang="en"] .hero h1{font-size:clamp(44px,5.2vw,72px);line-height:.98;letter-spacing:-1.8px}
+html[lang="en"] .hero h1 .title-sub{font-size:.70em;line-height:1.02;margin-top:4px}
+html[lang="en"] .project-name{font-size:14px;line-height:1.5}
+html[lang="en"] .hero .lead{font-size:16px;line-height:1.58}
+html[lang="en"] .hero-tags span{line-height:1.25}
+html[lang="en"] .section-title h2{font-size:clamp(27px,2.5vw,32px);line-height:1.14}
+html[lang="en"] .sector-head{align-items:flex-start}
+html[lang="en"] .sector-head h2{font-size:clamp(26px,2.6vw,32px);line-height:1.13;letter-spacing:-.3px}
+html[lang="en"] .intro-card h3{font-size:clamp(22px,2.2vw,28px);line-height:1.12}
+html[lang="en"] .kpi strong{font-size:clamp(29px,2.7vw,36px);line-height:1.08}
+html[lang="en"] .kpi p{line-height:1.52}
+html[lang="en"] .stat b{line-height:1.08}
+html[lang="en"] .stat span{line-height:1.48}
+html[lang="en"] .voice p{max-width:100%}
+html[lang="en"] .radio-hub-title h3{font-size:clamp(27px,2.25vw,37px);line-height:1.08;letter-spacing:-.5px}
+html[lang="en"] .radio-hub-title p{line-height:1.64}
+html[lang="en"] .radio-live-card{min-height:0}
+html[lang="en"] .radio-card-name strong{font-size:21px;line-height:1.16}
+html[lang="en"] .radio-next{grid-template-columns:1fr;align-items:start}
+html[lang="en"] .radio-next b{text-align:left;font-size:clamp(19px,1.8vw,26px);line-height:1.12}
+html[lang="en"] .radio-card-actions{grid-template-columns:1fr;}
+html[lang="en"] .radio-card-meta{line-height:1.5}
+html[lang="en"] .radio-dialog-head h3{line-height:1.12}
+html[lang="en"] .radio-summary-pills span{line-height:1.3}
+
+@media (max-width:1100px){
+ html[lang="en"] .hero-grid{grid-template-columns:1fr}
+ html[lang="en"] .hero-copy{padding:22px}
+ html[lang="en"] .radio-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:780px){
+ html[lang="en"] .hero h1{font-size:clamp(38px,12vw,58px)}
+ html[lang="en"] .hero h1 .title-sub{font-size:.66em}
+ html[lang="en"] .sector-head h2{font-size:25px}
+ html[lang="en"] .radio-hub-title h3{font-size:26px}
+ html[lang="en"] .radio-live-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
 <body><div aria-label="Idioma / Language" class="language-switcher" role="group"><button aria-pressed="true" class="lang-btn is-active" data-lang="es" type="button">ES</button><button aria-pressed="false" class="lang-btn" data-lang="en" type="button">EN</button></div>
 <div class="bg-float"></div><div class="wave w1"></div><div class="wave w2"></div><div class="wave w3"></div>
 <div class="shell">
@@ -902,6 +952,11 @@ html.photos-private .cf-photo,html.photos-private .photo-large{filter:blur(28px)
     nodes.forEach(n=>{ n.nodeValue=translateText(n.nodeValue,lang); });
     document.querySelectorAll('.lang-btn').forEach(b=>{const active=b.dataset.lang===lang;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});
     document.title=lang==='en'?'Progress Bulletin | ACH + GHF':'Boletín de avances | ACH + FHG';
+    // Recalculate responsive measurements after the language changes.
+    requestAnimationFrame(()=>{
+      window.dispatchEvent(new Event('resize'));
+      if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>window.dispatchEvent(new Event('resize')));
+    });
   }
   document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
   const obs=new MutationObserver(muts=>{ if(current!=='en')return; muts.forEach(m=>m.addedNodes.forEach(n=>{
