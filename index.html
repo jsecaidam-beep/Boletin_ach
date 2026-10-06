@@ -250,8 +250,8 @@ h1,h2,h3,.issue,.eyebrow,.kpi strong,.stat b,.hero-summary b{font-family:"Futura
 .radio-live-card[data-station="xpresat"]::after{background:linear-gradient(90deg,#099ad7,#005FB6)}
 .radio-card-name{margin-top:18px;min-height:auto}.radio-card-name strong{font-size:24px}.radio-card-name span{font-size:12px}
 .radio-card-top{padding-top:2px}.radio-frequency{font-size:11px;padding:7px 10px}.radio-live-status{font-size:10px;padding:7px 10px}
-.radio-next{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;margin:15px 0 7px;padding:15px 16px;border-radius:18px}
-.radio-next small{font-size:10px;align-self:center}.radio-next b{font-size:clamp(21px,2vw,29px);text-align:right;white-space:nowrap}
+.radio-next{display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:7px;margin:15px 0 7px;padding:15px 16px;border-radius:18px}
+.radio-next small{font-size:10px;line-height:1.2}.radio-next b{align-self:flex-end;font-size:clamp(21px,2vw,29px);text-align:right;white-space:nowrap}
 .radio-countdown{display:block;margin:0 0 12px;padding-left:3px;color:#5c798b;font-size:11px;font-weight:700;min-height:16px}
 .radio-countdown.is-live{color:#d54b2d}.radio-countdown.is-ended{color:#7f9099}
 .radio-mini-schedule{margin:0 0 14px;padding:11px 12px;border-radius:15px;background:rgba(231,247,251,.78);border:1px solid rgba(0,95,182,.08)}
@@ -268,7 +268,7 @@ h1,h2,h3,.issue,.eyebrow,.kpi strong,.stat b,.hero-summary b{font-family:"Futura
 .radio-dialog-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 @media(max-width:1280px){.radio-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.radio-dialog-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:1080px){.radio-hub-head{grid-template-columns:auto minmax(0,1fr)}.radio-clock{grid-column:1/-1;width:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}.radio-clock strong{text-align:center}.radio-clock span{text-align:right}}
-@media(max-width:780px){.radio-hub{width:100%;margin-left:0;transform:none;padding:18px;border-radius:28px}.radio-live-grid,.radio-dialog-list{grid-template-columns:1fr}.radio-hub-head{gap:14px}.radio-hub-title h3{font-size:28px}.radio-next{grid-template-columns:1fr}.radio-next b{text-align:left}.radio-card-actions{grid-template-columns:1fr}.radio-live-card{min-height:0;padding:19px}.radio-summary-pills{gap:5px}.radio-summary-pills span{font-size:9px}}
+@media(max-width:780px){.radio-hub{width:100%;margin-left:0;transform:none;padding:18px;border-radius:28px}.radio-live-grid,.radio-dialog-list{grid-template-columns:1fr}.radio-hub-head{gap:14px}.radio-hub-title h3{font-size:28px}.radio-next{align-items:flex-start}.radio-next b{align-self:flex-start;text-align:left}.radio-card-actions{grid-template-columns:1fr}.radio-live-card{min-height:0;padding:19px}.radio-summary-pills{gap:5px}.radio-summary-pills span{font-size:9px}}
 </style><style>
 /* Language switcher */
 .language-switcher{position:fixed;top:18px;right:18px;z-index:9999;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.88);box-shadow:0 12px 30px rgba(0,70,105,.15);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
@@ -285,7 +285,7 @@ h1,h2,h3,.issue,.eyebrow,.kpi strong,.stat b,.hero-summary b{font-family:"Futura
 .section-title h2,.sector-head h2,.intro-card h3,.territory h2,.radio-hub-title h3,.radio-card-name strong,.radio-dialog-head h3{text-wrap:balance;overflow-wrap:anywhere}
 .kpi,.stat,.intro-card,.sector-card,.radio-live-card{height:auto}
 .radio-card-name{min-height:0}
-.radio-next b{white-space:normal;overflow-wrap:anywhere}
+.radio-next b{white-space:nowrap;overflow-wrap:normal}
 .radio-card-actions a,.radio-card-actions button{height:auto;line-height:1.25;white-space:normal}
 
 html[lang="en"] .hero h1{font-size:clamp(44px,5.2vw,72px);line-height:.98;letter-spacing:-1.8px}
@@ -306,8 +306,8 @@ html[lang="en"] .radio-hub-title h3{font-size:clamp(27px,2.25vw,37px);line-heigh
 html[lang="en"] .radio-hub-title p{line-height:1.64}
 html[lang="en"] .radio-live-card{min-height:0}
 html[lang="en"] .radio-card-name strong{font-size:21px;line-height:1.16}
-html[lang="en"] .radio-next{grid-template-columns:1fr;align-items:start}
-html[lang="en"] .radio-next b{text-align:left;font-size:clamp(19px,1.8vw,26px);line-height:1.12}
+html[lang="en"] .radio-next{align-items:flex-start}
+html[lang="en"] .radio-next b{align-self:flex-start;text-align:left;font-size:clamp(19px,1.8vw,26px);line-height:1.12;white-space:normal;overflow-wrap:anywhere}
 html[lang="en"] .radio-card-actions{grid-template-columns:1fr;}
 html[lang="en"] .radio-card-meta{line-height:1.5}
 html[lang="en"] .radio-dialog-head h3{line-height:1.12}
