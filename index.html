@@ -1007,4 +1007,60 @@ document.querySelectorAll('img[alt^="Fondo Humanitario"]').forEach((image)=>{ima
 .hero-components span{display:flex;align-items:center;min-height:34px;padding:7px 10px;border:1px solid rgba(255,255,255,.6);border-radius:13px;background:rgba(255,255,255,.38);color:#1b607f;font-size:10px;font-weight:850;line-height:1.25;box-shadow:inset 0 1px 0 rgba(255,255,255,.42)}
 @media(min-width:960px) and (max-width:1060px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.kpi{padding:16px}.kpi strong{font-size:clamp(27px,3.4vw,34px)}.kpi p{font-size:12px}}
 @media(max-width:640px){.stats.cfm-stats{grid-template-columns:1fr}.hero-components{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}}
-</style></body></html>
+/* Protección disuasoria de las fotografías y del contenido visual. */
+html.content-protected,html.content-protected body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+html.content-protected img{-webkit-user-drag:none;user-drag:none}
+html.content-protected .social-card.instagram iframe{pointer-events:none}
+.protection-shield{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:rgba(2,42,65,.90);color:#fff;text-align:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .16s ease,visibility .16s ease;backdrop-filter:blur(22px) saturate(.65);-webkit-backdrop-filter:blur(22px) saturate(.65)}
+.protection-shield__panel{max-width:410px;padding:28px 30px;border:1px solid rgba(255,255,255,.34);border-radius:24px;background:linear-gradient(145deg,rgba(8,105,159,.88),rgba(15,157,174,.80));box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.protection-shield strong{display:block;font-family:"Futura","Roboto",sans-serif;font-size:25px;text-transform:uppercase;letter-spacing:.4px}.protection-shield span{display:block;margin-top:10px;font-size:13px;line-height:1.55}
+html.capture-guard .protection-shield{opacity:1;visibility:visible}
+@media print{html,body{background:#fff!important}body>*{display:none!important}body::before{display:none!important}body::after{content:"Contenido protegido · Acción contra el Hambre · Fondo Humanitario para Guatemala";position:fixed!important;inset:0!important;display:grid!important;place-items:center!important;width:auto!important;height:auto!important;padding:34px!important;background:#fff!important;color:#07537f!important;opacity:1!important;filter:none!important;mix-blend-mode:normal!important;animation:none!important;font:800 24px/1.35 "Roboto",sans-serif!important;text-align:center!important;z-index:1!important}}
+</style>
+<script>
+/* Esta capa reduce la copia casual. No sustituye un acceso privado al sitio. */
+(()=>{
+  const root=document.documentElement;
+  root.classList.add('content-protected');
+
+  const shield=document.createElement('div');
+  shield.className='protection-shield';
+  shield.setAttribute('aria-live','polite');
+  shield.innerHTML='<div class="protection-shield__panel"><strong>Contenido protegido</strong><span>Las fotografías y el contenido visual de este boletín están protegidos.</span></div>';
+  document.body.append(shield);
+
+  let concealTimer;
+  const hideShield=()=>{
+    window.clearTimeout(concealTimer);
+    concealTimer=window.setTimeout(()=>root.classList.remove('capture-guard'),1800);
+  };
+  const showShield=()=>{
+    root.classList.add('capture-guard');
+    hideShield();
+  };
+  const isEditable=target=>target instanceof HTMLElement&&target.matches('input,textarea,[contenteditable="true"]');
+
+  document.addEventListener('contextmenu',event=>event.preventDefault(),true);
+  document.addEventListener('selectstart',event=>event.preventDefault(),true);
+  document.addEventListener('copy',event=>event.preventDefault(),true);
+  document.addEventListener('cut',event=>event.preventDefault(),true);
+  document.addEventListener('dragstart',event=>{
+    if(event.target instanceof Element&&event.target.closest('img,a'))event.preventDefault();
+  },true);
+  document.addEventListener('keydown',event=>{
+    if(isEditable(event.target))return;
+    const key=event.key.toLowerCase();
+    const saveOrCopy=(event.ctrlKey||event.metaKey)&&['c','s','p','u'].includes(key);
+    const developerShortcut=event.ctrlKey&&event.shiftKey&&['i','j','c'].includes(key);
+    if(event.key==='PrintScreen'||event.key==='F12'||saveOrCopy||developerShortcut){
+      event.preventDefault();
+      showShield();
+    }
+  },true);
+  window.addEventListener('blur',showShield);
+  document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState==='hidden')showShield();
+  });
+  window.addEventListener('beforeprint',showShield);
+})();
+</script></body></html>
